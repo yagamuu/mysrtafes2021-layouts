@@ -187,6 +187,5 @@ const config = (name) => {
 }
 
 module.exports = [
-  config('dashboard'),
   config('graphics'),
 ];
