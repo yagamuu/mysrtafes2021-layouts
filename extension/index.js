@@ -11,5 +11,5 @@ module.exports = (nodecg) => {
      * things to be loaded *after* the NodeCG context is set.
      */
     nodecg_1.set(nodecg);
-    require('./example');
+    // require('./example');
 };
