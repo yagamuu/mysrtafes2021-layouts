@@ -3,7 +3,7 @@
 import { setUpReplicants } from '@/browser_shared/replicant_store';
 import Vue from 'vue';
 import App from './main.vue';
-import store from './store';
+import store from '../store/gameLayoutStore';
 
 setUpReplicants(store).then(() => {
   new Vue({

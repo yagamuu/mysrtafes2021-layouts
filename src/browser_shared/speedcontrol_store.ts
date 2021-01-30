@@ -1,5 +1,5 @@
-import type { RunDataArray, Timer } from '@/types/schemas/speedcontrol';
-import type { SpeedcontrolCurrentRunIndex } from '@/types/schemas/speedcontrolAdditions';
+import type { RunDataArray } from '@/types/schemas/speedcontrol/RunData';
+import type { Timer } from '@/types/schemas/speedcontrol/Timer';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
 import Vue from 'vue';
@@ -11,18 +11,20 @@ import { getModule, Module, Mutation, VuexModule } from 'vuex-module-decorators'
 export const reps: {
   runDataArrayReplicant: ReplicantBrowser<RunDataArray>;
   timerReplicant: ReplicantBrowser<Timer>;
-  speedcontrolCurrentRunIndexReplicant: ReplicantBrowser<SpeedcontrolCurrentRunIndex>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
   runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
   timerReplicant: nodecg.Replicant('timer', 'nodecg-speedcontrol'),
-  speedcontrolCurrentRunIndexReplicant: nodecg.Replicant(
-    'speedcontrolCurrentRunIndex', 'speedcontrol-additions',
-  ),
 };
 
-@Module({ name: 'ReplicantModule', namespaced: true })
-export class ReplicantModule extends VuexModule {
+// All the replicant types.
+export interface SpeedControlReplicantTypes {
+  runDataArrayReplicant: RunDataArray;
+  timerReplicant: Timer;
+}
+
+@Module({ name: 'SpeedcontrolModule', namespaced: true })
+export class SpeedcontrolModule extends VuexModule {
   // Replicant values are stored here.
   reps: { [k: string]: unknown } = {};
 
@@ -41,17 +43,17 @@ export class ReplicantModule extends VuexModule {
 }
 
 // eslint-disable-next-line import/no-mutable-exports
-export let replicantModule!: ReplicantModule;
-export const replicantNS = namespace('ReplicantModule');
+export let speedcontrolModule!: SpeedcontrolModule;
+export const replicantNS = namespace('SpeedcontrolModule');
 
 export async function setUpReplicants(store: Store<unknown>): Promise<void> {
   // Listens for each declared replicants "change" event, and updates the state.
   Object.keys(reps).forEach((name) => {
     reps[name].on('change', (val) => {
-      store.commit('ReplicantModule/setState', { name, val });
+      store.commit('SpeedcontrolModule/setState', { name, val });
     });
   });
   // We should make sure the replicant are ready to be read, needs to be done in browser context.
   await NodeCG.waitForReplicants(...Object.keys(reps).map((key) => reps[key]));
-  replicantModule = getModule(ReplicantModule, store);
+  speedcontrolModule = getModule(SpeedcontrolModule, store);
 }
