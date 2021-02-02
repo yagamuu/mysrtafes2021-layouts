@@ -83,11 +83,6 @@
     "compatibleRange": "^1.7.1",
     "graphics": [
       {
-        "file": "example.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
         "file": "SD_1.html",
         "width": 1920,
         "height": 1080

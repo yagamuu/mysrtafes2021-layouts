@@ -42,10 +42,10 @@ export default class extends Vue {
   @Getter readonly timerReplicant!: Timer;
 
   clipPaths: ClipPath[] = [{
-    x: 670 + 5,
-    y: 10 + 5,
+    x: 240 + 370 + 60 + 5,
+    y: 30 + 5,
     width: 1230 - (5 * 2),
-    height: 975 - (5 * 2),
+    height: 930 - (5 * 2),
   },
   {
     x: 375 + 5,
@@ -76,14 +76,14 @@ export default class extends Vue {
   };
 
   player: ComponentPosition = {
-    top: '995px',
+    top: '990px',
     left: '940px',
     width: '950px',
     height: '60px',
   };
 
   commentator: ComponentPosition = {
-    top: '995px',
+    top: '990px',
     left: '10px',
     width: '900px',
     height: '60px',
