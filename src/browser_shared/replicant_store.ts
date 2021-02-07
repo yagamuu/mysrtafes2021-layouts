@@ -1,5 +1,5 @@
 import type { RunDataArray, Timer } from '@/types/schemas/speedcontrol';
-import type { SpeedcontrolCurrentRunIndex } from '@/types/schemas/speedcontrolAdditions';
+import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@/types/schemas/speedcontrolAdditions';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
 import Vue from 'vue';
@@ -12,12 +12,20 @@ export const reps: {
   runDataArrayReplicant: ReplicantBrowser<RunDataArray>;
   timerReplicant: ReplicantBrowser<Timer>;
   speedcontrolCurrentRunIndexReplicant: ReplicantBrowser<SpeedcontrolCurrentRunIndex>;
+  speedcontrolUserAdditionArrayReplicant: ReplicantBrowser<SpeedcontrolUserAdditionArray>;
+  commentatorArrayReplicant: ReplicantBrowser<CommentatorArray>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
   runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
   timerReplicant: nodecg.Replicant('timer', 'nodecg-speedcontrol'),
   speedcontrolCurrentRunIndexReplicant: nodecg.Replicant(
     'speedcontrolCurrentRunIndex', 'speedcontrol-additions',
+  ),
+  speedcontrolUserAdditionArrayReplicant: nodecg.Replicant(
+    'speedcontrolUserAdditionArray', 'speedcontrol-additions',
+  ),
+  commentatorArrayReplicant: nodecg.Replicant(
+    'commentatorArray', 'speedcontrol-additions',
   ),
 };
 

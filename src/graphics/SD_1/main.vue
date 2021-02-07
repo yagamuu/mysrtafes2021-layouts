@@ -11,8 +11,19 @@
     <run-information-one-line :position="estimate">
       {{currentRunData.estimate}}
     </run-information-one-line>
-    <nameplate :isPlayer="false" :position="commentator" name="ひざがくさいひざがくさいひざがくさいひざがくさいひざがくさい" social="異世界の合言葉はもり異世界の合言葉はもり異世界の合言葉はもり異世界の合言葉はもり"/>
-    <nameplate :position="player" name="bearfaust0123" social="異世界の合言葉はもり"/>
+    <nameplate
+      :isPlayer="false"
+      :position="commentator"
+      :name="commentatorsNameOneLine"
+      :social="commentatorsSocialOneLine"
+      :displaySocial="currentSocial"
+    />
+    <nameplate
+      :position="player"
+      :name="currentRunner.name"
+      :social="currentRunner.social"
+      :displaySocial="currentSocial"
+    />
   </game-layout>
 </template>
 
@@ -20,6 +31,8 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { ClipPath } from '@/types/ClipPath';
 import { Getter } from 'vuex-class';
+import { Runner } from '@/types/Runners';
+import { Social } from '@/types/Social';
 import type { RunData, Timer } from '@/types/schemas/speedcontrol';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import GameLayout from '../views/GameLayout.vue';
@@ -40,6 +53,10 @@ import Nameplate from '../components/Nameplate.vue';
 export default class extends Vue {
   @Getter readonly currentRunData!: RunData;
   @Getter readonly timerReplicant!: Timer;
+  @Getter readonly currentRunner!: Runner;
+  @Getter readonly commentatorsNameOneLine!: string;
+  @Getter readonly commentatorsSocialOneLine!: Social;
+  @Getter readonly currentSocial!: number;
 
   clipPaths: ClipPath[] = [{
     x: 240 + 370 + 60 + 5,

@@ -22,6 +22,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ClipPath } from '@/types/ClipPath';
+import { storeModule } from '@/store/gameLayoutStore';
 import OverlayBase from './OverlayBase.vue';
 import ClipCanvas from '../components/ClipCanvas.vue';
 
@@ -37,6 +38,12 @@ export default class GameLayout extends Vue {
 
   @Prop({ type: Boolean, default: true })
   readonly gameBorder!: boolean;
+
+  created(): void {
+    setInterval(() => {
+      storeModule.nextSocial();
+    }, 15000);
+  }
 }
 </script>
 
