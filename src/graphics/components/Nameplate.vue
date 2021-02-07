@@ -1,47 +1,53 @@
 <template>
   <div class="nameplate" :style="position" ref="nameplate">
     <div :class="nameElementClass" ref="name">
+      <img src="../images/icon/controller_white_a.png" height="44px" v-if="isPlayer">
+      <img src="../images/icon/mic_white.png" height="44px" v-else>
       <span class="text" :style="{fontSize: 38 * fontSizeModifier.name + 'px'}">{{name}}</span>
     </div>
 
-    <div class="socialblock">
+    <div>
     <transition name="social" mode="out-in">
       <div
-        class="textParent social twitter"
+        class="textParent social"
         ref="social"
         v-if="displaySocial === socialOrder.twitter && social.twitter"
         key="twitter"
       >
+        <img src="../images/icon/twitter_white.png" height="44px">
         <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
           {{social.twitter}}
         </span>
       </div>
       <div
-        class="textParent social twitch"
+        class="textParent social"
         ref="social"
         v-else-if="displaySocial === socialOrder.twitch && social.twitch"
         key="twitch"
       >
+        <img src="../images/icon/twitch.png" height="44px">
         <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
           {{social.twitch}}
         </span>
       </div>
       <div
-        class="textParent social youtube"
+        class="textParent social"
         ref="social"
         v-else-if="displaySocial === socialOrder.youtube && social.youtube"
         key="youtube"
       >
+        <img src="../images/icon/youtube.png" height="44px">
         <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
           {{social.youtube}}
         </span>
       </div>
       <div
-        class="textParent social nico"
+        class="textParent social"
         ref="social"
         v-else-if="displaySocial === socialOrder.nico && social.nico"
         key="nico"
       >
+        <img src="../images/icon/nico.png" height="44px">
         <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
           {{social.nico}}
         </span>
@@ -172,40 +178,6 @@ export default class Nameplate extends Vue {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@mixin textBefore($url) {
-  content: '';
-  display: inline-table;
-  width: 44px;
-  height: 44px;
-  background-image: url($url);
-  background-size: contain;
-  vertical-align: sub;
-}
-
-.commentator:before {
-  @include textBefore('../images/icon/mic_white.png');
-}
-
-.player:before {
-  @include textBefore('../images/icon/controller_white_a.png');
-}
-
-.youtube:before {
-  @include textBefore('../images/icon/youtube.png');
-}
-
-.nico:before {
-  @include textBefore('../images/icon/nico.png');
-}
-
-.twitch:before {
-  @include textBefore('../images/icon/twitch.png');
-}
-
-.twitter:before {
-  @include textBefore('../images/icon/twitter_white.png');
 }
 
 .social-enter-active {
