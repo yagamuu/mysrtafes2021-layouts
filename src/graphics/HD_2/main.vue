@@ -15,9 +15,15 @@
       :displaySocial="currentSocial"
     />
     <nameplate
-      :position="player"
-      :name="currentRunner.name"
-      :social="currentRunner.social"
+      :position="player[0]"
+      :name="currentRunnersRace[0].name"
+      :social="currentRunnersRace[0].social"
+      :displaySocial="currentSocial"
+    />
+    <nameplate
+      :position="player[1]"
+      :name="currentRunnersRace[1].name"
+      :social="currentRunnersRace[1].social"
       :displaySocial="currentSocial"
     />
   </game-layout>
@@ -49,65 +55,88 @@ import Nameplate from '../components/Nameplate.vue';
 export default class extends Vue {
   @Getter readonly currentRunData!: RunData;
   @Getter readonly timerReplicant!: Timer;
-  @Getter readonly currentRunner!: Runner;
+  @Getter readonly currentRunnersRace!: Runner[];
   @Getter readonly commentatorsNameOneLine!: string;
   @Getter readonly commentatorsSocialOneLine!: Social;
   @Getter readonly currentSocial!: number;
 
   clipPaths: ClipPath[] = [
     {
-      x: 240 + 490 + 40 + 5,
-      y: 10 + 5,
-      width: 1130 - (5 * 2),
-      height: 860 - (5 * 2),
-    }, // DS-main
+      x: 0 + 5,
+      y: 60 + 170 + 20 + 5,
+      width: 955 - (5 * 2),
+      height: 550 - (5 * 2),
+    }, // HD-left
     {
-      x: 140 + 5,
-      y: 60 + 230 + 20 + 5,
-      width: 620 - (5 * 2),
-      height: 460 - (5 * 2),
-    }, // DS-sub
+      x: 960 + 5,
+      y: 60 + 170 + 20 + 5,
+      width: 955 - (5 * 2),
+      height: 550 - (5 * 2),
+    }, // HD-right
     {
-      x: 480 + 5,
-      y: 780 + 5,
-      width: 280 - (5 * 2),
-      height: 90 - (5 * 2),
-    }, // Timer
+      x: 10 + 5,
+      y: 820 + 5,
+      width: 150 - (5 * 2),
+      height: 50 - (5 * 2),
+    }, // Timer-left
+    {
+      x: 965 + 5,
+      y: 820 + 5,
+      width: 150 - (5 * 2),
+      height: 50 - (5 * 2),
+    }, // Timer-right
   ];
 
   gameTitle: ComponentPosition = {
-    top: '880px',
-    left: '10px',
+    top: '60px',
+    left: '970px',
     width: '930px',
     height: '80px',
   };
 
   category: ComponentPosition = {
-    top: '980px',
-    left: '10px',
-    width: '930px',
-    height: '80px',
+    top: '160px',
+    left: '970px',
+    width: '470px',
+    height: '50px',
   };
 
   estimate: ComponentPosition = {
-    top: '780px',
-    left: '10px',
-    width: '450px',
-    height: '80px',
+    top: '160px',
+    left: '1465px',
+    width: '435px',
+    height: '50px',
   };
 
-  player: ComponentPosition = {
-    top: '880px',
-    left: '960px',
-    width: '930px',
-    height: '80px',
+  player: ComponentPosition[] = [
+    {
+      top: '820px',
+      left: '170px',
+      width: '770px',
+      height: '40px',
+    },
+    {
+      top: '820px',
+      left: '1125px',
+      width: '770px',
+      height: '40px',
+    },
+  ];
+
+  /*
+  commentator: ComponentPosition = {
+    top: '820px',
+    left: '1120px',
+    width: '770px',
+    height: '40px',
   };
+  */
 
   commentator: ComponentPosition = {
-    top: '980px',
-    left: '960px',
-    width: '930px',
-    height: '80px',
+    top: '885px',
+    left: '630px',
+    width: '640px',
+    height: '65px',
   };
 }
 </script>

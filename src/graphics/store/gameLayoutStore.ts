@@ -70,6 +70,40 @@ class GameLayoutModule extends VuexModule {
     };
   }
 
+  get currentRunnersRace(): Runner[] {
+    if (!this.currentRunData) {
+      return [{
+        name: '',
+        social: {},
+      }];
+    }
+
+    const { teams } = this.currentRunData;
+    if (!teams) {
+      return [{
+        name: '',
+        social: {},
+      }];
+    }
+
+    return teams.map((team) => {
+      const runner = team.players[0];
+
+      // eslint-disable-next-line max-len
+      const runnerAdditions = this.speedcontrolUserAdditionArrayReplicant.find((addition) => addition.id === runner.externalID);
+
+      return {
+        name: runner.name,
+        social: {
+          twitch: runner.social.twitch,
+          nico: runnerAdditions?.social.nico,
+          youtube: runnerAdditions?.social.youtube,
+          twitter: runnerAdditions?.social.twitter,
+        },
+      };
+    });
+  }
+
   get currentCommentators(): Commentators {
     if (!this.currentRunData) {
       return [{

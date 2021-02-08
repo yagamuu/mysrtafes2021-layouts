@@ -56,18 +56,20 @@ export default class extends Vue {
   @Getter readonly commentatorsSocialOneLine!: Social;
   @Getter readonly currentSocial!: number;
 
-  clipPaths: ClipPath[] = [{
-    x: 240 + 370 + 60 + 5,
-    y: 30 + 5,
-    width: 1230 - (5 * 2),
-    height: 930 - (5 * 2),
-  },
-  {
-    x: 375 + 5,
-    y: 810 + 5,
-    width: 260 - (5 * 2),
-    height: 90 - (5 * 2),
-  }];
+  clipPaths: ClipPath[] = [
+    {
+      x: 240 + 370 + 60 + 5,
+      y: 30 + 5,
+      width: 1230 - (5 * 2),
+      height: 930 - (5 * 2),
+    }, // SD
+    {
+      x: 375 + 5,
+      y: 810 + 5,
+      width: 260 - (5 * 2),
+      height: 90 - (5 * 2),
+    }, // Timer
+  ];
 
   gameTitle: ComponentPosition = {
     top: '400px',
