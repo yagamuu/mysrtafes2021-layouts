@@ -1,64 +1,51 @@
 <template>
-  <div class="nameplate" :style="position" ref="nameplate">
-    <div :class="nameElementClass" ref="name">
+  <div class="nameplate" :style="position">
+    <div :class="nameElementClass">
       <img src="../images/icon/controller_white_a.png" height="44px" v-if="isPlayer">
       <img src="../images/icon/mic_white.png" height="44px" v-else>
-      <span class="text" :style="{fontSize: 38 * fontSizeModifier.name + 'px'}">{{name}}</span>
+      <span class="text">{{name}}</span>
     </div>
 
     <div>
     <transition name="social" mode="out-in">
       <div
         class="textParent social"
-        ref="social"
         v-if="displaySocial === socialOrder.twitter && social.twitter"
         key="twitter"
       >
         <img src="../images/icon/twitter_white.png" height="44px">
-        <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
-          {{social.twitter}}
-        </span>
+        <span class="text">{{social.twitter}}</span>
       </div>
       <div
         class="textParent social"
-        ref="social"
         v-else-if="displaySocial === socialOrder.twitch && social.twitch"
         key="twitch"
       >
         <img src="../images/icon/twitch.png" height="44px">
-        <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
-          {{social.twitch}}
-        </span>
+        <span class="text">{{social.twitch}}</span>
       </div>
       <div
         class="textParent social"
-        ref="social"
         v-else-if="displaySocial === socialOrder.youtube && social.youtube"
         key="youtube"
       >
         <img src="../images/icon/youtube.png" height="44px">
-        <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
-          {{social.youtube}}
-        </span>
+        <span class="text">{{social.youtube}}</span>
       </div>
       <div
         class="textParent social"
-        ref="social"
         v-else-if="displaySocial === socialOrder.nico && social.nico"
         key="nico"
       >
         <img src="../images/icon/nico.png" height="44px">
-        <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}">
-          {{social.nico}}
-        </span>
+        <span class="text">{{social.nico}}</span>
       </div>
       <div
         class="textParent social"
-        ref="social"
         v-else
         key="blank"
       >
-        <span class="text" :style="{fontSize: 24 * fontSizeModifier.social + 'px'}"/>
+        <span class="text"/>
       </div>
     </transition>
     </div>
@@ -67,7 +54,7 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import { Social } from '@/types/Social';
 import * as util from '../util';
@@ -91,60 +78,15 @@ export default class Nameplate extends Vue {
 
   socialOrder = util.socialOrder;
 
-  fontSizeModifier = {
-    name: 1,
-    social: 1,
-  };
-
   nameElementClass = [
     'textParent name',
     { player: this.isPlayer },
     { commentator: !this.isPlayer },
   ];
-
-  @Watch('name')
-  onChangeName(): void {
-    this.fontSizeModifier.name = 1;
-    this.fontSizeModifier.social = 1;
-  }
-
-  @Watch('social')
-  onChangeSocial(): void {
-    this.fontSizeModifier.name = 1;
-    this.fontSizeModifier.social = 1;
-  }
-
-  mounted(): void {
-    this.adjustmentFontSize();
-  }
-
-  updated(): void {
-    this.adjustmentFontSize();
-  }
-
-  adjustmentFontSize(): void {
-    const namePlateDom: any = this.$refs.nameplate;
-    const nameDom: any = this.$refs.name;
-    const socialDom: any = this.$refs.social;
-
-    if (!namePlateDom || !nameDom || !socialDom) return;
-
-    const namePlateWidth = namePlateDom.clientWidth;
-    const nameWidth = nameDom.clientWidth;
-    const socialWidth = socialDom.clientWidth;
-
-    if (namePlateWidth < (nameWidth + socialWidth)) {
-      if (nameWidth > socialWidth && this.fontSizeModifier.name >= 0.1) {
-        this.fontSizeModifier.name *= 0.95;
-      } else if (this.fontSizeModifier.social >= 0.1) {
-        this.fontSizeModifier.social *= 0.95;
-      }
-    }
-  }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
 .nameplate {
@@ -170,6 +112,7 @@ export default class Nameplate extends Vue {
 
 .social {
   width: 400px;
+  font-size: 24px;
 }
 
 .text {

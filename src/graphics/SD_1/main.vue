@@ -4,10 +4,8 @@
       <event-logo style="width: 240px;"/>
       <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
     </div>
-    <game-title :position="gameTitle">{{currentRunData.game}}</game-title>
-    <run-information-one-line :position="category">
-      {{currentRunData.category}}
-    </run-information-one-line>
+    <game-title :position="gameTitle" :text="currentRunData.game" />
+    <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
     <nameplate
       :isPlayer="false"
@@ -108,7 +106,7 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
 .header {

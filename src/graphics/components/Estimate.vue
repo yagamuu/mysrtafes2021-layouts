@@ -24,7 +24,7 @@ export default class Estimate extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
 .runInformation {

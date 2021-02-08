@@ -47,7 +47,7 @@ export default class GameLayout extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
 .gameBorder {

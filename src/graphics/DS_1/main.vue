@@ -4,10 +4,8 @@
       <event-logo style="width: 240px;"/>
       <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
     </div>
-    <game-title :position="gameTitle">{{currentRunData.game}}</game-title>
-    <run-information-one-line :position="category">
-      {{currentRunData.category}}
-    </run-information-one-line>
+    <run-information-one-line :position="gameTitle" :text="currentRunData.game" :fontSize="38"/>
+    <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
     <nameplate
       :isPlayer="false"
@@ -35,7 +33,6 @@ import type { RunData, Timer } from '@/types/schemas/speedcontrol';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import GameLayout from '../views/GameLayout.vue';
 import EventLogo from '../components/EventLogo.vue';
-import GameTitle from '../components/GameTitle.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
 import Nameplate from '../components/Nameplate.vue';
@@ -44,7 +41,6 @@ import Nameplate from '../components/Nameplate.vue';
   components: {
     GameLayout,
     EventLogo,
-    GameTitle,
     Estimate,
     RunInformationOneLine,
     Nameplate,
@@ -114,7 +110,7 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
 .header {
