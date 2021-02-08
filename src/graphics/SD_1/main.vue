@@ -8,9 +8,7 @@
     <run-information-one-line :position="category">
       {{currentRunData.category}}
     </run-information-one-line>
-    <run-information-one-line :position="estimate">
-      {{currentRunData.estimate}}
-    </run-information-one-line>
+    <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
     <nameplate
       :isPlayer="false"
       :position="commentator"
@@ -39,6 +37,7 @@ import GameLayout from '../views/GameLayout.vue';
 import EventLogo from '../components/EventLogo.vue';
 import GameTitle from '../components/GameTitle.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
+import Estimate from '../components/Estimate.vue';
 import Nameplate from '../components/Nameplate.vue';
 
 @Component({
@@ -47,6 +46,7 @@ import Nameplate from '../components/Nameplate.vue';
     EventLogo,
     GameTitle,
     RunInformationOneLine,
+    Estimate,
     Nameplate,
   },
 })

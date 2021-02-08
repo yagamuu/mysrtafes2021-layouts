@@ -16,3 +16,13 @@ export const searchExistsSocial = (social: Social): number[] => {
 
   return exists;
 };
+
+export const formatSeconds = (baseSeconds: number): string => {
+  const seconds = baseSeconds % 60;
+  const minutes = Math.floor(baseSeconds / 60) % 60;
+  const hours = Math.floor(baseSeconds / 3600);
+
+  const zeroPadding = (num: number): string => num.toString().padStart(2, '0');
+
+  return `${hours ? `${hours}:` : ''}${zeroPadding(minutes)}:${zeroPadding(seconds)}`;
+};

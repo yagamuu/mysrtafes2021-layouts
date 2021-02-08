@@ -7,7 +7,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class GameLayout extends Vue {
+export default class EventLogo extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly simple!: boolean;
 }
