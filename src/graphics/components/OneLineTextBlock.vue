@@ -1,5 +1,5 @@
 <template>
-  <div :style="{display: 'flex', width: width + 'px'}" ref="parent">
+  <div class="parent" :style="{width: width + 'px'}" ref="parent">
     <span
       ref="text"
       :style="{fontSize: fontSize * fontSizeModifier + 'px'}"
@@ -57,5 +57,10 @@ export default class OneLineTextBlock extends Vue {
 
 <style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
 
 </style>
