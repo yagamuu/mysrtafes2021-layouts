@@ -1,5 +1,5 @@
 <template>
-  <div class="runInformation" :style="position" ref="parent">
+  <div :style="{display: 'flex', width: width + 'px'}" ref="parent">
     <span
       ref="text"
       :style="{fontSize: fontSize * fontSizeModifier + 'px'}"
@@ -12,18 +12,17 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { ComponentPosition } from '@/types/ComponentPosition';
 
 @Component
-export default class RunInformationOneLine extends Vue {
-  @Prop({ type: Object, required: true })
-  readonly position!: ComponentPosition;
-
+export default class OneLineTextBlock extends Vue {
   @Prop({ type: String, default: '' })
   readonly text!: string;
 
   @Prop({ type: Number, default: 29 })
   readonly fontSize!: number;
+
+  @Prop({ type: Number, required: true })
+  readonly width!: number;
 
   fontSizeModifier = 1;
 
@@ -59,10 +58,4 @@ export default class RunInformationOneLine extends Vue {
 <style lang="scss" scoped>
 @import '../styles/gameLayout.scss';
 
-.runInformation {
-  @include runInformationCompornent();
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-}
 </style>

@@ -13,18 +13,21 @@
       :name="commentatorsNameOneLine"
       :social="commentatorsSocialOneLine"
       :displaySocial="currentSocial"
+      :width="640"
     />
     <nameplate
       :position="player[0]"
       :name="currentRunnersRace[0].name"
       :social="currentRunnersRace[0].social"
       :displaySocial="currentSocial"
+      :width="780"
     />
     <nameplate
       :position="player[1]"
       :name="currentRunnersRace[1].name"
       :social="currentRunnersRace[1].social"
       :displaySocial="currentSocial"
+      :width="780"
     />
   </game-layout>
 </template>
@@ -62,28 +65,28 @@ export default class extends Vue {
 
   clipPaths: ClipPath[] = [
     {
-      x: 0 + 5,
-      y: 60 + 170 + 20 + 5,
-      width: 955 - (5 * 2),
-      height: 550 - (5 * 2),
+      x: 10 + 5,
+      y: 60 + 170 + 50 + 5,
+      width: 945 - (5 * 2),
+      height: 540 - (5 * 2),
     }, // HD-left
     {
-      x: 960 + 5,
-      y: 60 + 170 + 20 + 5,
-      width: 955 - (5 * 2),
-      height: 550 - (5 * 2),
+      x: 965 + 5,
+      y: 60 + 170 + 50 + 5,
+      width: 945 - (5 * 2),
+      height: 540 - (5 * 2),
     }, // HD-right
     {
       x: 10 + 5,
-      y: 820 + 5,
+      y: 840 + 5,
       width: 150 - (5 * 2),
-      height: 50 - (5 * 2),
+      height: 60 - (5 * 2),
     }, // Timer-left
     {
       x: 965 + 5,
-      y: 820 + 5,
+      y: 840 + 5,
       width: 150 - (5 * 2),
-      height: 50 - (5 * 2),
+      height: 60 - (5 * 2),
     }, // Timer-right
   ];
 
@@ -91,52 +94,43 @@ export default class extends Vue {
     top: '60px',
     left: '970px',
     width: '930px',
-    height: '80px',
+    height: '90px',
   };
 
   category: ComponentPosition = {
-    top: '160px',
+    top: '170px',
     left: '970px',
     width: '470px',
     height: '50px',
   };
 
   estimate: ComponentPosition = {
-    top: '160px',
-    left: '1465px',
-    width: '435px',
+    top: '170px',
+    left: '1460px',
+    width: '440px',
     height: '50px',
   };
 
   player: ComponentPosition[] = [
     {
-      top: '820px',
-      left: '170px',
-      width: '770px',
-      height: '40px',
+      top: '840px',
+      left: '165px',
+      width: '780px',
+      height: '50px',
     },
     {
-      top: '820px',
-      left: '1125px',
-      width: '770px',
-      height: '40px',
+      top: '840px',
+      left: '1120px',
+      width: '780px',
+      height: '50px',
     },
   ];
 
-  /*
   commentator: ComponentPosition = {
-    top: '820px',
-    left: '1120px',
-    width: '770px',
-    height: '40px',
-  };
-  */
-
-  commentator: ComponentPosition = {
-    top: '885px',
+    top: '930px',
     left: '630px',
     width: '640px',
-    height: '65px',
+    height: '60px',
   };
 }
 </script>

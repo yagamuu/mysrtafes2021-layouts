@@ -13,12 +13,14 @@
       :name="commentatorsNameOneLine"
       :social="commentatorsSocialOneLine"
       :displaySocial="currentSocial"
+      :width="900"
     />
     <nameplate
       :position="player"
       :name="currentRunner.name"
       :social="currentRunner.social"
       :displaySocial="currentSocial"
+      :width="950"
     />
   </game-layout>
 </template>
