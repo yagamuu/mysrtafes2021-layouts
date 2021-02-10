@@ -7,31 +7,23 @@
     <run-information-one-line :position="gameTitle" :text="currentRunData.game" :fontSize="38"/>
     <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
-    <nameplate
+    <nameplate-without-sns
       :isPlayer="false"
       :position="commentator"
       :name="commentatorsNameOneLine"
-      :social="commentatorsSocialOneLine"
-      :displaySocial="currentSocial"
     />
-    <nameplate
+    <nameplate-without-sns
       :position="player[0]"
       :name="currentRunnersRace[0].name"
-      :social="currentRunnersRace[0].social"
-      :displaySocial="currentSocial"
     />
-    <nameplate
+    <nameplate-without-sns
       :position="player[1]"
       :name="currentRunnersRace[1].name"
-      :social="currentRunnersRace[1].social"
-      :displaySocial="currentSocial"
       :width="350"
     />
-    <nameplate
+    <nameplate-without-sns
       :position="player[2]"
       :name="currentRunnersRace[2].name"
-      :social="currentRunnersRace[2].social"
-      :displaySocial="currentSocial"
       :width="350"
     />
     <timer :position="timer" :time="timerReplicant.time" :timerStatus="timerReplicant.state"/>
@@ -50,7 +42,7 @@ import GameLayout from '../views/GameLayout.vue';
 import EventLogo from '../components/EventLogo.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
-import Nameplate from '../components/Nameplate.vue';
+import NameplateWithoutSns from '../components/NameplateWithoutSns.vue';
 import Timer from '../components/Timer.vue';
 
 @Component({
@@ -59,7 +51,7 @@ import Timer from '../components/Timer.vue';
     EventLogo,
     Estimate,
     RunInformationOneLine,
-    Nameplate,
+    NameplateWithoutSns,
     Timer,
   },
 })

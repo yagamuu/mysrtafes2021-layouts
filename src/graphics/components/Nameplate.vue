@@ -123,6 +123,7 @@ export default class Nameplate extends Vue {
   align-items: center;
   color: #fff;
   font-family: 'mplus-1c-medium';
+  white-space: nowrap;
 }
 
 .textParent {
