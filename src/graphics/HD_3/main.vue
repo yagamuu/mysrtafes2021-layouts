@@ -13,14 +13,29 @@
       :name="commentatorsNameOneLine"
       :social="commentatorsSocialOneLine"
       :displaySocial="currentSocial"
+      :width="920"
     />
     <nameplate
-      :position="player"
-      :name="currentRunner.name"
-      :social="currentRunner.social"
+      :position="player[0]"
+      :name="currentRunnersRace[0].name"
+      :social="currentRunnersRace[0].social"
       :displaySocial="currentSocial"
+      :width="670"
     />
-    <timer :position="timer" :time="timerReplicant.time" :timerStatus="timerReplicant.state"/>
+    <nameplate
+      :position="player[1]"
+      :name="currentRunnersRace[1].name"
+      :social="currentRunnersRace[1].social"
+      :displaySocial="currentSocial"
+      :width="670"
+    />
+    <nameplate
+      :position="player[2]"
+      :name="currentRunnersRace[2].name"
+      :social="currentRunnersRace[2].social"
+      :displaySocial="currentSocial"
+      :width="670"
+    />
   </game-layout>
 </template>
 
@@ -30,14 +45,13 @@ import { ClipPath } from '@/types/ClipPath';
 import { Getter } from 'vuex-class';
 import { Runner } from '@/types/Runners';
 import { Social } from '@/types/Social';
-import type { RunData, Timer as TimerInterface } from '@/types/schemas/speedcontrol';
+import type { RunData, Timer } from '@/types/schemas/speedcontrol';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import GameLayout from '../views/GameLayout.vue';
 import EventLogo from '../components/EventLogo.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
 import Nameplate from '../components/Nameplate.vue';
-import Timer from '../components/Timer.vue';
 
 @Component({
   components: {
@@ -46,72 +60,102 @@ import Timer from '../components/Timer.vue';
     Estimate,
     RunInformationOneLine,
     Nameplate,
-    Timer,
   },
 })
 export default class extends Vue {
   @Getter readonly currentRunData!: RunData;
-  @Getter readonly timerReplicant!: TimerInterface;
-  @Getter readonly currentRunner!: Runner;
+  @Getter readonly timerReplicant!: Timer;
+  @Getter readonly currentRunnersRace!: Runner[];
   @Getter readonly commentatorsNameOneLine!: string;
   @Getter readonly commentatorsSocialOneLine!: Social;
   @Getter readonly currentSocial!: number;
 
   clipPaths: ClipPath[] = [
     {
-      x: 240 + 490 + 40 + 5,
-      y: 10 + 5,
-      width: 1130 - (5 * 2),
-      height: 860 - (5 * 2),
-    }, // DS-main
+      x: 1000 + 5,
+      y: 60 + 5,
+      width: 840 - (5 * 2),
+      height: 480 - (5 * 2),
+    }, // HD-1
     {
       x: 140 + 5,
-      y: 60 + 230 + 20 + 5,
-      width: 620 - (5 * 2),
-      height: 460 - (5 * 2),
-    }, // DS-sub
+      y: 60 + 480 + 5,
+      width: 840 - (5 * 2),
+      height: 480 - (5 * 2),
+    }, // HD-2
+    {
+      x: 1000 + 5,
+      y: 60 + 480 + 5,
+      width: 840 - (5 * 2),
+      height: 480 - (5 * 2),
+    }, // HD-3
+    {
+      x: 1000 + 5,
+      y: 5,
+      width: 155 - (5 * 2),
+      height: 60 - (5 * 2),
+    }, // Timer-1
+    {
+      x: 140 + 5,
+      y: 60 + 480 + 480 + 5,
+      width: 155 - (5 * 2),
+      height: 60 - (5 * 2),
+    }, // Timer-2
+    {
+      x: 1000 + 5,
+      y: 60 + 480 + 480 + 5,
+      width: 155 - (5 * 2),
+      height: 60 - (5 * 2),
+    }, // Timer-3
   ];
 
   gameTitle: ComponentPosition = {
-    top: '880px',
-    left: '10px',
-    width: '930px',
-    height: '80px',
+    top: '250px',
+    left: '30px',
+    width: '920px',
+    height: '90px',
   };
 
   category: ComponentPosition = {
-    top: '980px',
-    left: '10px',
-    width: '930px',
-    height: '80px',
+    top: '360px',
+    left: '30px',
+    width: '460px',
+    height: '55px',
   };
 
   estimate: ComponentPosition = {
-    top: '780px',
-    left: '10px',
-    width: '450px',
-    height: '80px',
+    top: '360px',
+    left: '520px',
+    width: '430px',
+    height: '55px',
   };
 
-  player: ComponentPosition = {
-    top: '880px',
-    left: '960px',
-    width: '930px',
-    height: '80px',
-  };
+  player: ComponentPosition[] = [
+    {
+      top: '0px',
+      left: '1160px',
+      width: '670px',
+      height: '50px',
+    },
+    {
+      top: '1020px',
+      left: '300px',
+      width: '670px',
+      height: '50px',
+    },
+    {
+      top: '1020px',
+      left: '1160px',
+      width: '670px',
+      height: '50px',
+    },
+  ];
 
   commentator: ComponentPosition = {
-    top: '980px',
-    left: '960px',
-    width: '930px',
-    height: '80px',
-  };
-
-  timer: ComponentPosition = {
-    top: '780px',
-    left: '480px',
-    width: '270px',
-    height: '80px',
+    top: '435px',
+    left: '30px',
+    width: '920px',
+    height: '75px',
   };
 }
 </script>

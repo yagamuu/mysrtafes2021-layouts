@@ -3,7 +3,11 @@
     <div :class="nameElementClass">
       <img src="../images/icon/controller_white_a.png" height="44px" v-if="isPlayer">
       <img src="../images/icon/mic_white.png" height="44px" v-else>
-      <span class="text">{{name}}</span>
+      <one-line-text-block
+        :fontSize="38"
+        :text="name"
+        :width="(width / 2 - 40 - 44 - 10)"
+        style="paddingLeft: 10px"/>
     </div>
 
     <div>
@@ -14,7 +18,11 @@
         key="twitter"
       >
         <img src="../images/icon/twitter_white.png" height="44px">
-        <span class="text">{{social.twitter}}</span>
+        <one-line-text-block
+        :fontSize="24"
+        :text="social.twitter"
+        :width="(width / 2 - 40 - 44 - 10)"
+        style="paddingLeft: 10px"/>
       </div>
       <div
         class="textParent social"
@@ -22,7 +30,11 @@
         key="twitch"
       >
         <img src="../images/icon/twitch.png" height="44px">
-        <span class="text">{{social.twitch}}</span>
+        <one-line-text-block
+        :fontSize="24"
+        :text="social.twitch"
+        :width="(width / 2 - 40 - 44 - 10)"
+        style="paddingLeft: 10px"/>
       </div>
       <div
         class="textParent social"
@@ -30,7 +42,11 @@
         key="youtube"
       >
         <img src="../images/icon/youtube.png" height="44px">
-        <span class="text">{{social.youtube}}</span>
+        <one-line-text-block
+        :fontSize="24"
+        :text="social.youtube"
+        :width="(width / 2 - 40 - 44 - 10)"
+        style="paddingLeft: 10px"/>
       </div>
       <div
         class="textParent social"
@@ -38,14 +54,18 @@
         key="nico"
       >
         <img src="../images/icon/nico.png" height="44px">
-        <span class="text">{{social.nico}}</span>
+        <one-line-text-block
+        :fontSize="24"
+        :text="social.nico"
+        :width="(width / 2 - 40 - 44 - 10)"
+        style="paddingLeft: 10px"/>
       </div>
       <div
         class="textParent social"
         v-else
         key="blank"
       >
-        <span class="text"/>
+        <one-line-text-block :width="(width / 2 - 40)"/>
       </div>
     </transition>
     </div>
@@ -58,11 +78,19 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import { Social } from '@/types/Social';
 import * as util from '../util';
+import OneLineTextBlock from './OneLineTextBlock.vue';
 
-@Component
+@Component({
+  components: {
+    OneLineTextBlock,
+  },
+})
 export default class Nameplate extends Vue {
   @Prop({ type: Object, required: true })
   readonly position!: ComponentPosition;
+
+  @Prop({ type: Number, default: 930 })
+  readonly width!: number;
 
   @Prop({ type: String, required: true })
   readonly name!: string;
@@ -91,10 +119,9 @@ export default class Nameplate extends Vue {
 
 .nameplate {
   @include runInformationCompornent();
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   color: #fff;
-  font-size: 38px;
   font-family: 'mplus-1c-medium';
   white-space: nowrap;
 }
@@ -104,23 +131,6 @@ export default class Nameplate extends Vue {
   display: flex;
   /*justify-content: center;*/
   align-items: center;
-}
-
-.name {
-  width: 460px;
-}
-
-.social {
-  width: 400px;
-  font-size: 24px;
-}
-
-.text {
-  padding-left: 10px;
-  vertical-align: middle;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .social-enter-active {

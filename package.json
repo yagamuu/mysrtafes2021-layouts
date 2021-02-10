@@ -88,12 +88,27 @@
         "height": 1080
       },
       {
+        "file": "SD_3.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "SD_3_pickup.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "HD_1.html",
         "width": 1920,
         "height": 1080
       },
       {
         "file": "HD_2.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "HD_3.html",
         "width": 1920,
         "height": 1080
       },

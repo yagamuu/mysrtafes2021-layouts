@@ -7,18 +7,24 @@
     <run-information-one-line :position="gameTitle" :text="currentRunData.game" :fontSize="38"/>
     <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
-    <nameplate
+    <nameplate-without-sns
       :isPlayer="false"
       :position="commentator"
       :name="commentatorsNameOneLine"
-      :social="commentatorsSocialOneLine"
-      :displaySocial="currentSocial"
     />
-    <nameplate
-      :position="player"
-      :name="currentRunner.name"
-      :social="currentRunner.social"
-      :displaySocial="currentSocial"
+    <nameplate-without-sns
+      :position="player[0]"
+      :name="currentRunnersRace[0].name"
+    />
+    <nameplate-without-sns
+      :position="player[1]"
+      :name="currentRunnersRace[1].name"
+      :width="350"
+    />
+    <nameplate-without-sns
+      :position="player[2]"
+      :name="currentRunnersRace[2].name"
+      :width="350"
     />
     <timer :position="timer" :time="timerReplicant.time" :timerStatus="timerReplicant.state"/>
   </game-layout>
@@ -36,7 +42,7 @@ import GameLayout from '../views/GameLayout.vue';
 import EventLogo from '../components/EventLogo.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
-import Nameplate from '../components/Nameplate.vue';
+import NameplateWithoutSns from '../components/NameplateWithoutSns.vue';
 import Timer from '../components/Timer.vue';
 
 @Component({
@@ -45,14 +51,14 @@ import Timer from '../components/Timer.vue';
     EventLogo,
     Estimate,
     RunInformationOneLine,
-    Nameplate,
+    NameplateWithoutSns,
     Timer,
   },
 })
 export default class extends Vue {
   @Getter readonly currentRunData!: RunData;
   @Getter readonly timerReplicant!: TimerInterface;
-  @Getter readonly currentRunner!: Runner;
+  @Getter readonly currentRunnersRace!: Runner[];
   @Getter readonly commentatorsNameOneLine!: string;
   @Getter readonly commentatorsSocialOneLine!: Social;
   @Getter readonly currentSocial!: number;
@@ -63,13 +69,19 @@ export default class extends Vue {
       y: 10 + 5,
       width: 1130 - (5 * 2),
       height: 860 - (5 * 2),
-    }, // DS-main
+    }, // SD-1(main)
     {
-      x: 140 + 5,
-      y: 60 + 230 + 20 + 5,
-      width: 620 - (5 * 2),
-      height: 460 - (5 * 2),
-    }, // DS-sub
+      x: 10 + 5,
+      y: 60 + 230 + 150 + 50 + 5,
+      width: 360 - (5 * 2),
+      height: 270 - (5 * 2),
+    }, // SD-2
+    {
+      x: 10 + 360 + 30 + 5,
+      y: 60 + 230 + 150 + 50 + 5,
+      width: 360 - (5 * 2),
+      height: 270 - (5 * 2),
+    }, // SD-3
   ];
 
   gameTitle: ComponentPosition = {
@@ -93,12 +105,26 @@ export default class extends Vue {
     height: '80px',
   };
 
-  player: ComponentPosition = {
-    top: '880px',
-    left: '960px',
-    width: '930px',
-    height: '80px',
-  };
+  player: ComponentPosition[] = [
+    {
+      top: '880px',
+      left: '960px',
+      width: '930px',
+      height: '80px',
+    },
+    {
+      top: '440px',
+      left: '10px',
+      width: '350px',
+      height: '40px',
+    },
+    {
+      top: '440px',
+      left: '400px',
+      width: '350px',
+      height: '40px',
+    },
+  ];
 
   commentator: ComponentPosition = {
     top: '980px',
