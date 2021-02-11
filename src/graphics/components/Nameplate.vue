@@ -73,7 +73,6 @@
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import { Social } from '@/types/Social';

@@ -1,9 +1,13 @@
 <template>
   <overlay-base :backgroundUri="backgroundUri">
     <div id="container">
+      <setup-schedule-component :position="schedule"/>
+      <spotify-track :position="spotifyTrack" :track="spotifyPlayingTrackReplicant"/>
       <div class="footer">
         <div style="height:140px;width:1370px; display:block;"/>
-        <span class="test">不思議のダンジョンRTAフェスはRTA in Japan チャンネル貸し出しシステムを利用した外部イベントです</span>
+        <span class="externalEventNotice">
+          不思議のダンジョンRTAフェスはRTA in Japan チャンネル貸し出しシステムを利用した外部イベントです
+        </span>
       </div>
     </div>
   </overlay-base>
@@ -11,16 +15,49 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
+import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
+import type { RunData, RunDataArray } from '@/types/schemas/speedcontrol';
+import { ComponentPosition } from '@/types/ComponentPosition';
 import OverlayBase from '../views/OverlayBase.vue';
+import SpotifyTrack from '../components/SpotifyTrack.vue';
+import SetupScheduleComponent from '../components/SetupSchedule/SetupScheduleCompornent.vue';
 import background from '../images/setup/background.png';
 
 @Component({
   components: {
     OverlayBase,
+    SpotifyTrack,
+    SetupScheduleComponent,
   },
 })
 export default class extends Vue {
+  @Getter readonly spotifyPlayingTrackReplicant!: SpotifyPlayingTrack;
+  @Getter readonly upcomingRuns!: RunDataArray;
+
   backgroundUri = background;
+
+  get upnextRun(): RunData {
+    return this.upcomingRuns[0];
+  }
+
+  get ondeckRuns(): RunDataArray {
+    return this.upcomingRuns.slice(1);
+  }
+
+  spotifyTrack: ComponentPosition = {
+    top: '5px',
+    left: '1370px',
+    width: '525px',
+    height: '90px',
+  };
+
+  schedule: ComponentPosition = {
+    top: '140px',
+    left: '1000px',
+    width: '800px',
+    height: '750px',
+  };
 }
 </script>
 
@@ -32,7 +69,7 @@ export default class extends Vue {
   flex-direction: column;
 }
 
-.test {
+.externalEventNotice {
   color: #ff5800;
   font-size: 24px;
   text-shadow: rgb(255, 255, 255) 4px 0px 0px,
@@ -62,4 +99,5 @@ export default class extends Vue {
   rgb(255, 255, 255) 3.84068px -1.11766px 0px,
   rgb(255, 255, 255) 3.9978px -0.132717px 0px;
 }
+
 </style>

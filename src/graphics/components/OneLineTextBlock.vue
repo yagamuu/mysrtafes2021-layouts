@@ -1,5 +1,5 @@
 <template>
-  <div class="parent" :style="{width: width + 'px'}" ref="parent">
+  <div class="parent" :style="{width: width + 'px', justifyContent: align}" ref="parent">
     <span
       ref="text"
       :style="{fontSize: fontSize * fontSizeModifier + 'px'}"
@@ -20,6 +20,9 @@ export default class OneLineTextBlock extends Vue {
 
   @Prop({ type: Number, default: 29 })
   readonly fontSize!: number;
+
+  @Prop({ type: String, default: 'center' })
+  readonly align!: string;
 
   @Prop({ type: Number, required: true })
   readonly width!: number;
@@ -56,11 +59,10 @@ export default class OneLineTextBlock extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/gameLayout.scss';
 
 .parent {
   display: flex;
-  justify-content: center;
+  white-space: nowrap;
 }
 
 </style>
