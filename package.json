@@ -34,6 +34,7 @@
     "@types/clone": "^2.1.0",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^14.14.20",
+    "@types/uuid": "^8.3.0",
     "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
@@ -87,6 +88,14 @@
       "nodecg-twitter-widget": "^0.9.0",
       "nodecg-spotify-widget": "^0.9.0"
     },
+    "dashboardPanels": [
+      {
+        "name": "setupInformation",
+        "title": "Setup Information",
+        "file": "setupInformation.html",
+        "width": 3
+      }
+    ],
     "graphics": [
       {
         "file": "SD_1.html",

@@ -58,7 +58,7 @@ import TwitterNotification from '../components/TwitterNotification/TwitterNotifi
     NameplateWithoutSns,
     Timer,
     Commentator,
-    TwitterNotification
+    TwitterNotification,
   },
 })
 export default class extends Vue {

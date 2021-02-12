@@ -5,7 +5,9 @@
       <setup-schedule :position="schedule"/>
       <spotify-track :position="spotifyTrack" :track="spotifyPlayingTrackReplicant"/>
       <div class="footer">
-        <div style="height:140px;width:1370px; display:block;"/>
+        <div class="setupInformation">
+          <setup-information/>
+        </div>
         <span class="externalEventNotice">
           不思議のダンジョンRTAフェスはRTA in Japan チャンネル貸し出しシステムを利用した外部イベントです
         </span>
@@ -24,6 +26,7 @@ import OverlayBase from '../views/OverlayBase.vue';
 import SpotifyTrack from '../components/SpotifyTrack.vue';
 import SetupSchedule from '../components/SetupSchedule/SetupSchedule.vue';
 import TwitterNotification from '../components/TwitterNotification/TwitterNotification.vue';
+import SetupInformation from '../components/SetupInformation.vue';
 import background from '../images/setup/background.png';
 
 @Component({
@@ -32,6 +35,7 @@ import background from '../images/setup/background.png';
     SpotifyTrack,
     SetupSchedule,
     TwitterNotification,
+    SetupInformation,
   },
 })
 export default class extends Vue {
@@ -77,6 +81,15 @@ export default class extends Vue {
 .footer {
   @include baseCompornent(900px, 280px, 1640px, 180px);
   flex-direction: column;
+}
+
+.setupInformation {
+  height: 130px;
+  width: 1370px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
 }
 
 .externalEventNotice {

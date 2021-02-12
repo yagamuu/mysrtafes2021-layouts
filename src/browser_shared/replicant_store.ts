@@ -1,6 +1,7 @@
 import type { RunDataArray, Timer } from '@/types/schemas/speedcontrol';
 import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@/types/schemas/speedcontrolAdditions';
 import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
+import { SetupInformationArray } from '@/types/schemas/setupInformationArray';
 import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
@@ -18,6 +19,7 @@ export const reps: {
   commentatorArrayReplicant: ReplicantBrowser<CommentatorArray>;
   spotifyPlayingTrackReplicant: ReplicantBrowser<SpotifyPlayingTrack>;
   activeTweetReplicant: ReplicantBrowser<ActiveTweet>;
+  setupInformationArrayReplicant: ReplicantBrowser<SetupInformationArray>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
   runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
@@ -37,6 +39,7 @@ export const reps: {
   activeTweetReplicant: nodecg.Replicant(
     'activeTweet', 'nodecg-twitter-widget',
   ),
+  setupInformationArrayReplicant: nodecg.Replicant('setupInformationArray'),
 };
 
 @Module({ name: 'ReplicantModule', namespaced: true })

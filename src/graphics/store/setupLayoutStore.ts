@@ -35,6 +35,10 @@ class SetupLayoutModule extends VuexModule {
   get activeTweetReplicant(): ActiveTweet {
     return this.reps.activeTweetReplicant;
   }
+
+  get setupInformationArray() {
+    return this.reps.setupInformationArrayReplicant;
+  }
 }
 
 const store = new Store({

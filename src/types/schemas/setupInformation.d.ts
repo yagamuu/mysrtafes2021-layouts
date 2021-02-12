@@ -5,6 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Configschema {
-	exampleProperty: string;
+export interface SetupInformation {
+	id: string;
+	information: string;
+	[k: string]: any;
 }
