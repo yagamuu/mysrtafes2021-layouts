@@ -39,9 +39,10 @@ export default class TwitterTextBox extends Vue {
   overflow: hidden;
   z-index: 0;
   font-size: 24px;
-  color: #97E54C;
+  color: #000000;
+  font-weight: bold;
   line-height: 32px;
-  text-shadow:
+  /*text-shadow:
   rgb(0, 0, 0) 2px 0px 0px,
   rgb(0, 0, 0) 1.75517px 0.958851px 0px,
   rgb(0, 0, 0) 1.0806px 1.68294px 0px,
@@ -54,7 +55,7 @@ export default class TwitterTextBox extends Vue {
   rgb(0, 0, 0) -0.421592px -1.95506px 0px,
   rgb(0, 0, 0) 0.567324px -1.91785px 0px,
   rgb(0, 0, 0) 1.41734px -1.41108px 0px,
-  rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+  rgb(0, 0, 0) 1.92034px -0.558831px 0px;*/
 }
 
 .name {
