@@ -2,8 +2,11 @@
   <game-layout :clipPaths="clipPaths">
     <div class="header">
       <event-logo style="width: 240px;"/>
-      <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
+      <div class="hashImg">
+        <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
+      </div>
     </div>
+    <twitter-notification :position="twitter" :line="8"/>
     <game-title :position="gameTitle" :text="currentRunData.game" />
     <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
@@ -39,6 +42,7 @@ import GameTitle from '../components/GameTitle.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
 import Nameplate from '../components/Nameplate.vue';
+import TwitterNotification from '../components/TwitterNotification/TwitterNotification.vue';
 
 @Component({
   components: {
@@ -48,6 +52,7 @@ import Nameplate from '../components/Nameplate.vue';
     RunInformationOneLine,
     Estimate,
     Nameplate,
+    TwitterNotification,
   },
 })
 export default class extends Vue {
@@ -107,6 +112,13 @@ export default class extends Vue {
     width: '900px',
     height: '60px',
   };
+
+  twitter: ComponentPosition = {
+    top: '60px',
+    left: '240px',
+    width: '370px',
+    height: '290px',
+  };
 }
 </script>
 
@@ -114,7 +126,16 @@ export default class extends Vue {
 @import '../styles/gameLayout.scss';
 
 .header {
-  @include baseCompornent($width:670px);
+  @include baseCompornent($width:610px);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hashImg {
+  display: flex;
+  background-color: #254678;
+  height: 55px;
+  width: 370px;
 }
 
 </style>

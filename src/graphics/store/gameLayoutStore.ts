@@ -5,6 +5,7 @@ import { getModule, Module, VuexModule, Mutation, Action } from 'vuex-module-dec
 import type { Runner } from '@/types/Runners';
 import { Social } from '@/types/Social';
 import type { Commentators } from '@/types/Commentators';
+import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
 import type { RunData, RunDataArray, Timer } from '@/types/schemas/speedcontrol';
 import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@/types/schemas/speedcontrolAdditions';
 import * as util from '../util';
@@ -29,6 +30,10 @@ class GameLayoutModule extends VuexModule {
 
   get timerReplicant(): Timer {
     return this.reps.timerReplicant;
+  }
+
+  get activeTweetReplicant(): ActiveTweet {
+    return this.reps.activeTweetReplicant;
   }
 
   get speedcontrolCurrentRunIndexReplicant(): SpeedcontrolCurrentRunIndex {
@@ -182,7 +187,7 @@ class GameLayoutModule extends VuexModule {
   }
 
   get currentSocial(): number {
-    return this.existsSocials[this.displaySocialIndex];
+    return this.existsSocials[this.displaySocialIndex] || 0;
   }
 
   @Mutation

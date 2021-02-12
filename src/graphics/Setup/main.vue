@@ -1,7 +1,8 @@
 <template>
   <overlay-base :backgroundUri="backgroundUri">
     <div id="container">
-      <setup-schedule-component :position="schedule"/>
+      <twitter-notification :position="twitter"/>
+      <setup-schedule :position="schedule"/>
       <spotify-track :position="spotifyTrack" :track="spotifyPlayingTrackReplicant"/>
       <div class="footer">
         <div style="height:140px;width:1370px; display:block;"/>
@@ -21,14 +22,16 @@ import type { RunData, RunDataArray } from '@/types/schemas/speedcontrol';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import OverlayBase from '../views/OverlayBase.vue';
 import SpotifyTrack from '../components/SpotifyTrack.vue';
-import SetupScheduleComponent from '../components/SetupSchedule/SetupScheduleCompornent.vue';
+import SetupSchedule from '../components/SetupSchedule/SetupSchedule.vue';
+import TwitterNotification from '../components/TwitterNotification/TwitterNotification.vue';
 import background from '../images/setup/background.png';
 
 @Component({
   components: {
     OverlayBase,
     SpotifyTrack,
-    SetupScheduleComponent,
+    SetupSchedule,
+    TwitterNotification,
   },
 })
 export default class extends Vue {
@@ -57,6 +60,13 @@ export default class extends Vue {
     left: '1000px',
     width: '800px',
     height: '750px',
+  };
+
+  twitter: ComponentPosition = {
+    top: '0px',
+    left: '325px',
+    width: '985px',
+    height: '130px',
   };
 }
 </script>

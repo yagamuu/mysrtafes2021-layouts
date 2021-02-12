@@ -3,7 +3,8 @@ import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import { getModule, Module, VuexModule } from 'vuex-module-decorators';
 import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
-import type { RunData, RunDataArray } from '@/types/schemas/speedcontrol';
+import type { RunDataArray } from '@/types/schemas/speedcontrol';
+import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
 import type { SpeedcontrolCurrentRunIndex } from '@/types/schemas/speedcontrolAdditions';
 
 Vue.use(Vuex);
@@ -29,6 +30,10 @@ class SetupLayoutModule extends VuexModule {
   get upcomingRuns(): RunDataArray {
     const index = this.speedcontrolCurrentRunIndexReplicant || 0;
     return this.runDataArrayReplicant.slice(index, index + 3);
+  }
+
+  get activeTweetReplicant(): ActiveTweet {
+    return this.reps.activeTweetReplicant;
   }
 }
 

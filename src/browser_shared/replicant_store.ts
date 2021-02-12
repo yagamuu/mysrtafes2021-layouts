@@ -1,6 +1,7 @@
 import type { RunDataArray, Timer } from '@/types/schemas/speedcontrol';
 import type { SpeedcontrolCurrentRunIndex, SpeedcontrolUserAdditionArray, CommentatorArray } from '@/types/schemas/speedcontrolAdditions';
 import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
+import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
 import clone from 'clone';
 import type { ReplicantBrowser } from 'nodecg/types/browser';
 import Vue from 'vue';
@@ -16,6 +17,7 @@ export const reps: {
   speedcontrolUserAdditionArrayReplicant: ReplicantBrowser<SpeedcontrolUserAdditionArray>;
   commentatorArrayReplicant: ReplicantBrowser<CommentatorArray>;
   spotifyPlayingTrackReplicant: ReplicantBrowser<SpotifyPlayingTrack>;
+  activeTweetReplicant: ReplicantBrowser<ActiveTweet>;
   [k: string]: ReplicantBrowser<unknown>;
 } = {
   runDataArrayReplicant: nodecg.Replicant('runDataArray', 'nodecg-speedcontrol'),
@@ -31,6 +33,9 @@ export const reps: {
   ),
   spotifyPlayingTrackReplicant: nodecg.Replicant(
     'spotifyPlayingTrack', 'nodecg-spotify-widget',
+  ),
+  activeTweetReplicant: nodecg.Replicant(
+    'activeTweet', 'nodecg-twitter-widget',
   ),
 };
 

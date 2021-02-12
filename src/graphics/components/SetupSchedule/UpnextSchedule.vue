@@ -29,7 +29,7 @@ import OneLineTextBlock from '../OneLineTextBlock.vue';
     OneLineTextBlock,
   },
 })
-export default class UpnextScheduleComponent extends Vue {
+export default class UpnextSchedule extends Vue {
   @Prop({ type: Object, required: true })
   readonly runData!: RunData;
 
@@ -70,7 +70,6 @@ export default class UpnextScheduleComponent extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/setupLayout.scss';
 
 .upnextSchedule {
   display: flex;

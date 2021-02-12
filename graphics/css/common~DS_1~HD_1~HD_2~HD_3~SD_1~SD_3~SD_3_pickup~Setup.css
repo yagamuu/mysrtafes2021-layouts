@@ -41,3 +41,5 @@ body {
 
 
 .parent[data-v-36eceeca]{display:flex;white-space:nowrap}
+.tweet[data-v-4e31c4ea]{position:absolute;display:flex;margin:0;padding:0;top:0px;left:0px;width:auto;height:auto;flex-direction:column;background-color:#fff;justify-content:left;font-family:"mplus-1c-medium";overflow:hidden;z-index:0;font-size:24px;color:#97e54c;line-height:32px;text-shadow:#000 2px 0px 0px,#000 1.75517px .958851px 0px,#000 1.0806px 1.68294px 0px,#000 .141474px 1.99499px 0px,#000 -0.832294px 1.81859px 0px,#000 -1.60229px 1.19694px 0px,#000 -1.97998px .28224px 0px,#000 -1.87291px -0.701566px 0px,#000 -1.30729px -1.5136px 0px,#000 -0.421592px -1.95506px 0px,#000 .567324px -1.91785px 0px,#000 1.41734px -1.41108px 0px,#000 1.92034px -0.558831px 0px}.name[data-v-4e31c4ea]{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.text[data-v-4e31c4ea]{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.twitter-enter-active[data-v-3314872e]{transition:all 1s}.twitter-leave-active[data-v-3314872e]{transition:all 1s}.twitter-enter[data-v-3314872e],.twitter-leave-to[data-v-3314872e]{transform:translateY(-100%)}

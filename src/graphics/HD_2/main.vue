@@ -2,8 +2,11 @@
   <game-layout :clipPaths="clipPaths">
     <div class="header">
       <event-logo style="width: 240px;"/>
-      <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
+      <div class="hashImg">
+        <img src="../images/hashtag.png" height="45px" style="margin-top:10px;">
+      </div>
     </div>
+    <twitter-notification :position="twitter" :line="4"/>
     <run-information-one-line :position="gameTitle" :text="currentRunData.game" :fontSize="38"/>
     <run-information-one-line :position="category" :text="currentRunData.category"/>
     <estimate :position="estimate" :estimateS="currentRunData.estimateS"/>
@@ -17,15 +20,15 @@
     />
     <nameplate
       :position="player[0]"
-      :name="currentRunnersRace[0].name"
-      :social="currentRunnersRace[0].social"
+      :name="currentRunnersRace[0].name || ''"
+      :social="currentRunnersRace[0].social || {}"
       :displaySocial="currentSocial"
       :width="780"
     />
     <nameplate
       :position="player[1]"
-      :name="currentRunnersRace[1].name"
-      :social="currentRunnersRace[1].social"
+      :name="currentRunnersRace[1] ? currentRunnersRace[1].name : ''"
+      :social="currentRunnersRace[1] ? currentRunnersRace[1].social : {}"
       :displaySocial="currentSocial"
       :width="780"
     />
@@ -45,6 +48,7 @@ import EventLogo from '../components/EventLogo.vue';
 import RunInformationOneLine from '../components/RunInformationOneLine.vue';
 import Estimate from '../components/Estimate.vue';
 import Nameplate from '../components/Nameplate.vue';
+import TwitterNotification from '../components/TwitterNotification/TwitterNotification.vue';
 
 @Component({
   components: {
@@ -53,6 +57,7 @@ import Nameplate from '../components/Nameplate.vue';
     Estimate,
     RunInformationOneLine,
     Nameplate,
+    TwitterNotification,
   },
 })
 export default class extends Vue {
@@ -132,6 +137,13 @@ export default class extends Vue {
     width: '640px',
     height: '60px',
   };
+
+  twitter: ComponentPosition = {
+    top: '60px',
+    left: '240px',
+    width: '705px',
+    height: '160px',
+  };
 }
 </script>
 
@@ -139,7 +151,16 @@ export default class extends Vue {
 @import '../styles/gameLayout.scss';
 
 .header {
-  @include baseCompornent($width:670px);
+  @include baseCompornent($width:945px);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hashImg {
+  display: flex;
+  background-color: #254678;
+  height: 55px;
+  width: 705px;
 }
 
 </style>

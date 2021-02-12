@@ -15,8 +15,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { ComponentPosition } from '@/types/ComponentPosition';
 import type { RunData, RunDataArray } from '@/types/schemas/speedcontrol';
-import UpnextScheduleComponent from './UpnextScheduleComponent.vue';
-import OndeckScheduleComponent from './OndeckScheduleComponent.vue';
+import UpnextScheduleComponent from './UpnextSchedule.vue';
+import OndeckScheduleComponent from './OndeckSchedule.vue';
 import * as util from '../../util';
 
 @Component({
@@ -25,7 +25,7 @@ import * as util from '../../util';
     OndeckScheduleComponent,
   },
 })
-export default class SetupScheduleComponent extends Vue {
+export default class SetupSchedule extends Vue {
   @Getter readonly upcomingRuns!: RunDataArray;
 
   @Prop({ type: Object, required: true })
