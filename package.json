@@ -81,6 +81,12 @@
   },
   "nodecg": {
     "compatibleRange": "^1.7.1",
+    "bundleDependencies": {
+      "nodecg-speedcontrol": "^2.0.0",
+      "speedcontrol-additions": "^0.9.0",
+      "nodecg-twitter-widget": "^0.9.0",
+      "nodecg-spotify-widget": "^0.9.0"
+    },
     "graphics": [
       {
         "file": "SD_1.html",
