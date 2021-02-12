@@ -1,6 +1,6 @@
 <template>
   <div class="tweet" :style="position">
-    <span class="name">{{tweet.name}}{{tweet.name}}{{tweet.name}}{{tweet.name}}</span>
+    <span class="name">{{tweet.name}}</span>
     <span class="text" :style="{'-webkit-line-clamp' : line}">
       {{tweet.text}}
     </span>
