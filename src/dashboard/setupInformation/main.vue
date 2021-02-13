@@ -21,7 +21,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Getter } from 'vuex-class';
 import { storeModule, transitionStatus } from './store';
 import InformationCreationForm from './compornents/InformationCreationForm.vue';
 import InformationList from './compornents/InformationList.vue';

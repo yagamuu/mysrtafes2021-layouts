@@ -8,6 +8,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ClipPath } from '@/types/ClipPath';
+import background from '../images/gameLayout/background.png';
 
 @Component
 export default class ClipCanvas extends Vue {
@@ -15,20 +16,25 @@ export default class ClipCanvas extends Vue {
   readonly clipPaths!: ClipPath[];
 
   ctx?: CanvasRenderingContext2D;
+  backgroundImage = background;
+
   mounted(): void {
     const element = this.$el as HTMLCanvasElement;
     const ctx = element.getContext('2d');
     if (ctx) {
       this.ctx = ctx;
     }
-    this.draw();
+    const bg = new Image();
+    bg.src = this.backgroundImage;
+    bg.addEventListener('load', () => {
+      this.draw(bg);
+    });
   }
-  draw(): void {
+  draw(bg: HTMLImageElement): void {
     if (!this.ctx) {
       return;
     }
-    this.ctx.fillStyle = '#254678';
-    this.ctx.fillRect(0, 0, 1920, 1080);
+    this.ctx.drawImage(bg, 0, 0);
     this.ctx.globalCompositeOperation = 'xor';
     this.clipPaths?.forEach((clipPath) => {
       this.ctx?.fillRect(

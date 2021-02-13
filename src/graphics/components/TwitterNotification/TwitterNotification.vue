@@ -43,6 +43,7 @@ export default class TwitterNotification extends Vue {
 }
 
 .twitter-enter, .twitter-leave-to {
-  transform: translateY(-100%);
+  transform: translateY(-130%);
+  opacity: 0;
 }
 </style>

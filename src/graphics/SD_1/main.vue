@@ -133,7 +133,6 @@ export default class extends Vue {
 
 .hashImg {
   display: flex;
-  background-color: #254678;
   height: 55px;
   width: 370px;
 }
