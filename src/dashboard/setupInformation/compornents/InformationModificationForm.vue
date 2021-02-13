@@ -30,10 +30,10 @@
           class="mt-2"
           block
           color="primary"
-          @click="createInformation"
+          @click="updateInformation"
           :disabled="!valid"
         >
-          Create
+          Edit
         </v-btn>
       </v-form>
     </v-sheet>
@@ -45,7 +45,8 @@ import { Vue, Component } from 'vue-property-decorator';
 import { storeModule } from '../store';
 
 @Component
-export default class InformationCreationForm extends Vue {
+export default class InformationModificationForm extends Vue {
+  id = storeModule.id;
   text = storeModule.text;
   valid = true;
 
@@ -53,8 +54,13 @@ export default class InformationCreationForm extends Vue {
     storeModule.transitionToInformation();
   }
 
-  createInformation(): void {
-    storeModule.createInformation(this.text);
+  updateInformation(): void {
+    if (this.id) {
+      storeModule.updateInformation({
+        id: this.id,
+        text: this.text,
+      });
+    }
     this.close();
   }
 

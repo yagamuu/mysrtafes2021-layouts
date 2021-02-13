@@ -2,6 +2,7 @@
   <v-app>
     <transition name="view-transition">
       <information-creation-form v-if="isCreation" />
+      <information-modification-form v-else-if="isModification" />
       <div v-else>
         <v-btn
           class="my-2"
@@ -23,17 +24,23 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { storeModule, transitionStatus } from './store';
 import InformationCreationForm from './compornents/InformationCreationForm.vue';
+import InformationModificationForm from './compornents/InformationModificationForm.vue';
 import InformationList from './compornents/InformationList.vue';
 
 @Component({
   components: {
     InformationCreationForm,
+    InformationModificationForm,
     InformationList,
   },
 })
 export default class extends Vue {
   get isCreation(): boolean {
     return storeModule.transition === transitionStatus.creation;
+  }
+
+  get isModification(): boolean {
+    return storeModule.transition === transitionStatus.modification;
   }
 
   openCreationForm(): void {

@@ -9,7 +9,7 @@
         </v-card-text>
         <v-card-actions>
         <v-spacer/>
-        <v-btn small disabled>Edit</v-btn>
+        <v-btn small @click="openInformationModification(information)">Edit</v-btn>
         <v-btn x-small @click="deleteInformation(information.id)">Delete</v-btn>
       </v-card-actions>
     </v-card>
@@ -20,11 +20,16 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { SetupInformationArray } from '@/types/schemas/setupInformationArray';
+import { SetupInformation } from '@/types/schemas/setupInformation';
 import { storeModule } from '../store';
 
 @Component
 export default class InformationList extends Vue {
   @Getter readonly setupInformationArray!: SetupInformationArray;
+
+  openInformationModification(information: SetupInformation): void {
+    storeModule.transitionToModification(information);
+  }
 
   deleteInformation(id: string): void {
     storeModule.deleteInformation(id);

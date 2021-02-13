@@ -15,6 +15,17 @@ const createInformation = (text) => {
     });
     nodecg_1.get().log.info('Add information');
 };
+const updateInformation = (information) => {
+    if (!informationArrayRep.value) {
+        return;
+    }
+    const informationIndex = informationArrayRep.value.findIndex((informationRep) => informationRep.id === information.id);
+    if (informationIndex < -1) {
+        return;
+    }
+    informationArrayRep.value[informationIndex] = information;
+    nodecg_1.get().log.info('Update information');
+};
 const deleteInformation = (id) => {
     if (!informationArrayRep.value) {
         return;
@@ -24,6 +35,12 @@ const deleteInformation = (id) => {
 };
 nodecg_1.get().listenFor('createInformation', (data, ack) => {
     createInformation(data.text);
+    if (ack && !ack.handled) {
+        ack(null);
+    }
+});
+nodecg_1.get().listenFor('updateInformation', (data, ack) => {
+    updateInformation(data);
     if (ack && !ack.handled) {
         ack(null);
     }

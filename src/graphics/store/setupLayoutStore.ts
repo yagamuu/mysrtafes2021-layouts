@@ -6,6 +6,7 @@ import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
 import type { RunDataArray } from '@/types/schemas/speedcontrol';
 import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
 import type { SpeedcontrolCurrentRunIndex } from '@/types/schemas/speedcontrolAdditions';
+import { SetupInformationArray } from '@/types/schemas/setupInformationArray';
 
 Vue.use(Vuex);
 
@@ -42,7 +43,7 @@ class SetupLayoutModule extends VuexModule {
     return this.reps.activeTweetReplicant;
   }
 
-  get setupInformationArray() {
+  get setupInformationArray(): SetupInformationArray {
     return this.reps.setupInformationArrayReplicant;
   }
 

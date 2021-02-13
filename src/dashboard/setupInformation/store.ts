@@ -2,6 +2,7 @@ import { ReplicantModule } from '@/browser_shared/replicant_store';
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
 import { getModule, Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
+import { SetupInformation } from '@/types/schemas/setupInformation';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export const transitionStatus = {
 @Module({ name: 'OurModule' })
 class OurModule extends VuexModule {
   transition: number = transitionStatus.informations;
+  id : string|null = null;
   text = '';
 
   // Helper getter to return all replicants.
@@ -26,8 +28,25 @@ class OurModule extends VuexModule {
   }
 
   @Mutation
+  INIT_STATE(): void {
+    this.id = null;
+    this.text = '';
+  }
+
+  @Mutation
+  UPDATE_STATE(information: SetupInformation): void {
+    this.id = information.id || null;
+    this.text = information.text || '';
+  }
+
+  @Mutation
   OPEN_CREATION_FORM(): void {
     this.transition = transitionStatus.creation;
+  }
+
+  @Mutation
+  OPEN_MODIFICATION_FORM(): void {
+    this.transition = transitionStatus.modification;
   }
 
   @Mutation
@@ -41,13 +60,25 @@ class OurModule extends VuexModule {
   }
 
   @Action
+  updateInformation(information: SetupInformation): void {
+    nodecg.sendMessage('updateInformation', information);
+  }
+
+  @Action
   deleteInformation(id: string): void {
     nodecg.sendMessage('deleteInformation', { id });
   }
 
   @Action
   transitionToCreation(): void {
+    this.INIT_STATE();
     this.OPEN_CREATION_FORM();
+  }
+
+  @Action
+  transitionToModification(information: SetupInformation): void {
+    this.UPDATE_STATE(information);
+    this.OPEN_MODIFICATION_FORM();
   }
 
   @Action

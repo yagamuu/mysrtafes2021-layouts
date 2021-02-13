@@ -7,6 +7,6 @@
 
 export interface SetupInformation {
 	id: string;
-	information: string;
+	text: string;
 	[k: string]: any;
 }

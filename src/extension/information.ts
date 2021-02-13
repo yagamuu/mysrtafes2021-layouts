@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import { get as nodecg } from '@/util/nodecg';
-import { SetupInformationArray } from '@/types/schemas/setupInformationArray';
+import { SetupInformation, SetupInformationArray } from '@/types/schemas/setupInformationArray';
 
 const informationArrayRep = nodecg().Replicant<SetupInformationArray>('setupInformationArray', {
   defaultValue: [],
@@ -17,6 +17,20 @@ const createInformation = (text: string): void => {
   nodecg().log.info('Add information');
 };
 
+const updateInformation = (information: SetupInformation): void => {
+  if (!informationArrayRep.value) { return; }
+
+  const informationIndex = informationArrayRep.value.findIndex(
+    (informationRep) => informationRep.id === information.id,
+  );
+
+  if (informationIndex < -1) { return; }
+
+  informationArrayRep.value[informationIndex] = information;
+
+  nodecg().log.info('Update information');
+};
+
 const deleteInformation = (id: string): void => {
   if (!informationArrayRep.value) { return; }
 
@@ -29,6 +43,14 @@ const deleteInformation = (id: string): void => {
 
 nodecg().listenFor('createInformation', (data, ack) => {
   createInformation(data.text);
+
+  if (ack && !ack.handled) {
+    ack(null);
+  }
+});
+
+nodecg().listenFor('updateInformation', (data, ack) => {
+  updateInformation(data);
 
   if (ack && !ack.handled) {
     ack(null);
