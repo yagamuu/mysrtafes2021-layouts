@@ -1,28 +1,21 @@
 <template>
-  <div>
-    <span class="informationText">{{setupText}}</span>
-  </div>
+  <span class="informationText"> {{information.text}}</span>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import { SetupInformationArray } from '@/types/schemas/setupInformationArray';
+import { SetupInformation } from '@/types/schemas/setupInformationArray';
 
 @Component({
   components: {
   },
 })
-export default class SetupInformation extends Vue {
-  @Getter readonly setupInformationArray!: SetupInformationArray;
+export default class SetupInformationText extends Vue {
+  @Getter readonly displaySetupInformation!: number;
 
-  get setupText(): string {
-    if (!this.setupInformationArray[0]) {
-      return '';
-    }
-
-    return this.setupInformationArray[0].text;
-  }
+  @Prop({ type: Object, required: true })
+  readonly information!: SetupInformation;
 }
 </script>
 

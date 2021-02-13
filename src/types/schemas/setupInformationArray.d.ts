@@ -5,8 +5,10 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type SetupInformationArray = {
+export type SetupInformation = {
 	id: string;
 	text: string;
 	[k: string]: any;
-}[];
+};
+
+export type SetupInformationArray = SetupInformation[];

@@ -1,7 +1,7 @@
 import { ReplicantModule } from '@/browser_shared/replicant_store';
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
-import { getModule, Module, VuexModule } from 'vuex-module-decorators';
+import { getModule, Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
 import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
 import type { RunDataArray } from '@/types/schemas/speedcontrol';
 import type { ActiveTweet } from '@/types/schemas/nodecgTwitterWidget';
@@ -11,6 +11,12 @@ Vue.use(Vuex);
 
 @Module({ name: 'SetupLayoutModule' })
 class SetupLayoutModule extends VuexModule {
+  displaySetupInformationState = 0;
+
+  get displaySetupInformation() {
+    return this.displaySetupInformationState;
+  }
+
   get reps() {
     return this.context.rootState.ReplicantModule.reps;
   }
@@ -38,6 +44,16 @@ class SetupLayoutModule extends VuexModule {
 
   get setupInformationArray() {
     return this.reps.setupInformationArrayReplicant;
+  }
+
+  @Mutation
+  NEXT_SETUP_INFORMATION(length: number): void {
+    this.displaySetupInformationState = (this.displaySetupInformationState + 1) % length;
+  }
+
+  @Action
+  nextSetupInformation(): void {
+    this.NEXT_SETUP_INFORMATION(this.setupInformationArray.length);
   }
 }
 

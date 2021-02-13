@@ -22,11 +22,12 @@ import { Getter } from 'vuex-class';
 import type { SpotifyPlayingTrack } from '@/types/schemas/nodecgSpotifyWidget';
 import type { RunData, RunDataArray } from '@/types/schemas/speedcontrol';
 import { ComponentPosition } from '@/types/ComponentPosition';
+import { storeModule } from '@/store/setupLayoutStore';
 import OverlayBase from '../views/OverlayBase.vue';
 import SpotifyTrack from '../components/SpotifyTrack.vue';
 import SetupSchedule from '../components/SetupSchedule/SetupSchedule.vue';
 import TwitterNotification from '../components/TwitterNotification/TwitterNotification.vue';
-import SetupInformation from '../components/SetupInformation.vue';
+import SetupInformation from '../components/SetupInformation/SetupInformation.vue';
 import background from '../images/setup/background.png';
 
 @Component({
@@ -50,6 +51,12 @@ export default class extends Vue {
 
   get ondeckRuns(): RunDataArray {
     return this.upcomingRuns.slice(1);
+  }
+
+  created(): void {
+    setInterval(() => {
+      storeModule.nextSetupInformation();
+    }, 30000);
   }
 
   spotifyTrack: ComponentPosition = {
