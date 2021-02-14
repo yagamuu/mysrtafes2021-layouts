@@ -12,7 +12,7 @@
       align="left"/>
     <one-line-text-block
       :fontSize="21"
-      text="Stream Palette"
+      :text="albumName"
       :width="width"
       align="left"/>
   </div>
@@ -47,6 +47,13 @@ export default class SpotifyTrack extends Vue {
   }
   get artists(): string {
     return this.track?.artists.join(', ') || '';
+  }
+
+  get albumName(): string {
+    if (!this.track) {
+      return '';
+    }
+    return this.track?.albumName || '';
   }
 }
 </script>
