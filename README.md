@@ -23,7 +23,7 @@ nodecg install cma2819/nodecg-spotify-widget
 ```
 - nodecg-speedcontrolのbranchを`mysrtafes2021`に変更する。
   ※`speedcontrol-additions`を正常に動作させるために必要
-- NodeCGをインストールしたディレクトリ内の`/cfg`ディレクトリに各bundleのコンフィルファイルを作成する。
+- NodeCGをインストールしたディレクトリ内の`/cfg`ディレクトリに各bundleのコンフィグファイルを作成する。
   ※ツイート表示、Spotify連携等に必要
 
 ## Usage
