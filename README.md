@@ -1,38 +1,39 @@
-# nodecg-vue-ts-template
-Template for NodeCG bundles that use Vue.js and TypeScript.
+# Mystery Dungeon RTA FES 2 Layouts
+第2回不思議のダンジョンシリーズRTAフェスというイベント用に作成したNodeCGのbundleです。  
+This is the [NodeCG](http://github.com/nodecg/nodecg) bundle used for the streaming overlay in Mystery Dungeon RTA FES 2.  
 
+## Installation
+- NodeCGを何らかの方法でインストールします。(おすすめはnodecg-cliの実行)
+- `/bundle`ディレクトリ内に必要なbundleのインストールを行います。
+  - 当bundle
+  - [yagamuu/nodecg-speedcontrol(fork)](https://github.com/yagamuu/nodecg-speedcontrol)
+  - [speedcontrol-additions](https://github.com/cma2819/speedcontrol-additions)
+  - [nodecg-twitter-widget](https://github.com/cma2819/nodecg-twitter-widget)
+  - [nodecg-spotify-widget](https://github.com/cma2819/nodecg-spotify-widget)
 
-## Technical Details
+### インストール手順例
+```
+npm install nodecg-cli -g
+nodecg setup
+nodecg install yagamuu/mysrtafes2021-layouts
+nodecg install yagamuu/nodecg-speedcontrol
+nodecg install cma2819/speedcontrol-additions
+nodecg install cma2819/nodecg-twitter-widget
+nodecg install cma2819/nodecg-spotify-widget
+```
+- nodecg-speedcontrolのbranchを`mysrtafes2021`に変更する。
+  ※`speedcontrol-additions`を正常に動作させるために必要
+- NodeCGをインストールしたディレクトリ内の`/cfg`ディレクトリに各bundleのコンフィルファイルを作成する。
+  ※ツイート表示、Spotify連携等に必要
 
-- Extension uses *TypeScript*.
-- Browser uses *Vue.js (v2)*, with *TypeScript* for the scripting.
-  - *TypeScript* uses decorators, with [vue-class-component](https://github.com/vuejs/vue-class-component), [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator), [vuex-module-decorators](https://github.com/championswimmer/vuex-module-decorators) and [vuex-class](https://github.com/ktsn/vuex-class) to help (I chose these because in my experience it helped with correct typings while making Single File Components and such).
-  - Includes *Vuex* and a template file for using it with replicants ([`./src/browser_shared/replicant_store.ts`](src/browser_shared/replicant_store.ts)).
-  - Dashboard also includes *Vuetify*, for easy styling of UI.
-  - Builds using *webpack*.
-- *ESLint* is included for extension/browser/typings.
-  - Extends [airbnb-typescript/base](https://github.com/iamturns/eslint-config-airbnb-typescript), alongside a few other recommended/essential packages.
-  - Has some personal choices/override rules, but not many.
-- I personally use *Visual Studio Code* with some appropriate extensions ([Vetur](https://github.com/vuejs/vetur) for example), so have made sure it works well in that editor.
-- The extension/browser files have some example code scattered about that should help in how to use things.
+## Usage
+- `npm run start`を実行しNodeCGを起動する。
 
-
-## Package Commands
-
-- `autofix`: Automatically fix any possible linting errors using ESLint.
-- `autofix:browser`: See above, but only for browser based code.
-- `autofix:extension`: See above, but only for extension based code/typings.
-- `build`: Build written code for use in production.
-- `build:browser`: See above, but only for browser based code.
-- `build:extension`: See above, but only for extension based code.
-- `clean`: Clean up all built/watched files.
-- `start`: Start NodeCG.
-- `schema-types`: Create TypeScript typings for schemas/`Configschema.json` using `nodecg-cli`.
-- `watch`: Build code and watch for changes, for use in development.
-- `watch:browser`: See above, but only for browser based code.
-- `watch:extension`: See above, but only for extension based code.
-
-
-## Some notes on updating replicants from browser context...
-
-I always suggest updating your replicants by triggering mutations/actions inside of the Vuex store modules. Although you may be able to use a `get`/`set` combination successfully for non-object/non-array based replicants, it can lead to issues with the opposite, hence the suggestion (believe me, I spent too long trying). This means it's a bit more complex than setting things in the extension code, but isn't much different than how you may usually use a Vuex store if you are already used to those. Check out the included samples for more help.
+## Credits
+- [NodeCG](https://github.com/nodecg/nodecg): Main framework.
+- [nodecg-speedcontrol](https://github.com/speedcontrol/nodecg-speedcontrol): NodeCG bundle for broadcast graphics framework/application.
+- [nodecg-vue-ts-template](https://github.com/zoton2/nodecg-vue-ts-template): Template for NodeCG bundles that use Vue.js and TypeScript.
+- [speedcontrol-additions](https://github.com/cma2819/speedcontrol-additions): NodeCG layout bundle for adding information to nodecg-speedcontrol.
+- [nodecg-twitter-widget](https://github.com/cma2819/nodecg-twitter-widget): NodeCG layout bundle for showing tweet.
+- [nodecg-spotify-widget](https://github.com/cma2819/nodecg-spotify-widget): NodeCG layout bundle for showing spotify information.
+- [ponzu](https://twitter.com/ponzu24): Graphics design.
