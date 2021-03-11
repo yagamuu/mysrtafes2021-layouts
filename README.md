@@ -37,3 +37,4 @@ nodecg install cma2819/nodecg-spotify-widget
 - [nodecg-twitter-widget](https://github.com/cma2819/nodecg-twitter-widget): NodeCG layout bundle for showing tweet.
 - [nodecg-spotify-widget](https://github.com/cma2819/nodecg-spotify-widget): NodeCG layout bundle for showing spotify information.
 - [ponzu](https://twitter.com/ponzu24): Graphics design.
+- [isuZu](https://twitter.com/y_isuZu): Marathon Logo, Setup background illust.
